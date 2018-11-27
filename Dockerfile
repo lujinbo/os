@@ -1,5 +1,5 @@
 # ucse 基础镜像（alpine linux)
-FROM alpine:edge
+FROM alpine:3.8
 LABEL author=duanxuqiang@ucse.net
 
 ENV TIMEZONE Asia/Shanghai
@@ -10,8 +10,8 @@ RUN mkdir -p /var/www/html && \
     mkdir -p /ucse/web && \
     # 修改镜像源为国内ustc.edu.cn(中科大)/aliyun.com(阿里云)/tuna.tsinghua.edu.cn（清华）
     # main官方仓库，community社区仓库
-    echo http://mirrors.aliyun.com/alpine/edge/main > /etc/apk/repositories && \
-    echo http://mirrors.aliyun.com/alpine/edge/community >> /etc/apk/repositories && \
+    echo http://mirrors.aliyun.com/alpine/v3.8/main > /etc/apk/repositories && \
+    echo http://mirrors.aliyun.com/alpine/v3.8/community >> /etc/apk/repositories && \
     # 更新系统和修改时区以及一些扩展 busybox-extras libc6-compat openssh git shadow
     apk update && apk upgrade -a && apk add --no-cache tzdata curl wget bash vim && \
     # -X获取指定仓库的包
